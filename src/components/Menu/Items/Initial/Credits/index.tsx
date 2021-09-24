@@ -17,9 +17,13 @@ const Text = styled.span`
 export const Credits = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const onClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
-      <Modal isOpen={isOpen}></Modal>
+      <Modal onClose={onClose} isOpen={isOpen}></Modal>
       <Text onClick={() => setIsOpen(true)}>credits</Text>
     </div>
   );

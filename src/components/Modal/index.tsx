@@ -4,9 +4,10 @@ import ReactDOM from "react-dom";
 
 interface Props {
   isOpen: boolean;
+  onClose: () => void;
 }
 
-const Container = styled.div`
+const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -18,10 +19,13 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-export const Modal: FC<Props> = ({ isOpen, children }) => {
+export const Modal: FC<Props> = ({ isOpen, children, onClose }) => {
   return isOpen
     ? ReactDOM.createPortal(
-        <Container>{children}</Container>,
+        <>
+          <Backdrop onClick={onClose} />
+          {children}
+        </>,
         document.getElementById("modals")!,
       )
     : null;
