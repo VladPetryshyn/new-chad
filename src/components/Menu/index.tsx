@@ -68,7 +68,7 @@ export const Menu = () => {
           ))}
         </Button>
       )}
-      <CustomTransition isOpen={isOpen} timeout={500}>
+      <CustomTransition isOpen={isOpen} timeout={{ enter: 0, exit: 500 }}>
         {(state: string) => <Backdrop state={state} onClick={onClose} />}
       </CustomTransition>
       <CustomTransition isOpen={isOpen}>

@@ -3,13 +3,13 @@ import { Transition } from "react-transition-group";
 
 interface Props {
   isOpen: boolean;
-  timeout?: number;
+  timeout?: number | { enter: number; exit: number };
 }
 
 export const CustomTransition: FC<Props> = ({
   children,
   isOpen,
-  timeout = 300,
+  timeout = { enter: 0, exit: 300 },
 }) => {
   return (
     <Transition

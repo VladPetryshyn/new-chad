@@ -1,5 +1,4 @@
 import { Menu } from "@components/Menu";
-import { Modal } from "@components/Modal";
 import { createContext, useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 import { Wallpapers } from "./components/Wallpapers";

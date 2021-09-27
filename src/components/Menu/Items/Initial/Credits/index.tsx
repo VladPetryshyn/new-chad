@@ -23,7 +23,10 @@ export const Credits = () => {
 
   return (
     <div>
-      <Modal onClose={onClose} isOpen={isOpen}></Modal>
+      <Modal onClose={onClose} isOpen={isOpen}>
+        <h2>Programming: Vlad Petryshyn</h2>
+        <h2>Design: Vlad Petryshyn, Katya Vartanyan</h2>
+      </Modal>
       <Text onClick={() => setIsOpen(true)}>credits</Text>
     </div>
   );
