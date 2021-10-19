@@ -327,6 +327,7 @@ module.exports = function (webpackEnv) {
         "@components": path.resolve(__dirname, "../src/components"),
         "@hooks": path.resolve(__dirname, "../src/hooks"),
         "@icons": path.resolve(__dirname, "../src/icons"),
+        "@assets": path.resolve(__dirname, "../src/assets"),
         "@types": path.resolve(__dirname, "../src/types"),
         "@utils": path.resolve(__dirname, "../src/utils"),
         // Support React Native Web

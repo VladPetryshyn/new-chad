@@ -20,7 +20,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@icons/*": ["./src/icons/*"],
       "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"]

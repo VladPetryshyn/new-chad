@@ -6,6 +6,7 @@ import { MenuItems } from "./Items";
 const Container = styled.div`
   position: fixed;
   right: 0;
+  top: 0;
 `;
 
 const MenuBody = styled.div`

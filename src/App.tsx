@@ -1,3 +1,4 @@
+import { Grid } from "@components/Grid";
 import { Menu } from "@components/Menu";
 import { createContext, useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
@@ -25,6 +26,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <ThemeContext.Provider value={setTheme}>
         <Wallpapers />
+        <Grid />
         <Menu />
       </ThemeContext.Provider>
     </ThemeProvider>

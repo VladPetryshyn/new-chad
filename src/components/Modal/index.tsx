@@ -9,20 +9,23 @@ interface Props {
 }
 
 const Backdrop = styled.div`
+  z-index: 99999;
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: #00000099;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: opacity 0.5s;
+  width: 100vw;
+  height: 100vh;
   opacity: ${(p: { state: string }) => (p.state === "entered" ? "1" : "0")};
 `;
 
-const ModalContainer = styled.div`
+const Container = styled.div`
   background: linear-gradient(
       279.69deg,
       rgba(112, 152, 225, 0.11) 6.12%,
@@ -37,9 +40,6 @@ const ModalContainer = styled.div`
   backdrop-filter: blur(100px);
   border-radius: 33px;
   transition: 0.2s;
-  position: absolute;
-  top: 50%;
-  left: 50%;
   ${(p: { state: string }) => {
     switch (p.state) {
       case "entered":
@@ -73,10 +73,11 @@ export const Modal: FC<Props> = ({ isOpen, children, onClose }) => {
         return (
           <>
             {ReactDOM.createPortal(
-              <>
-                <Backdrop state={state} onClick={onClose} />
-                <ModalContainer state={state}>{children}</ModalContainer>
-              </>,
+              <Backdrop state={state} onClick={onClose}>
+                <Container state={state} onClick={(e) => e.stopPropagation()}>
+                  {children}
+                </Container>
+              </Backdrop>,
               document.getElementById("modals")!,
             )}
           </>
