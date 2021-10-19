@@ -1,5 +1,5 @@
 import { Switch } from "@components/Switch";
-import { Blocks } from "@icons/Feather/blocks";
+import { ReactComponent as Blocks } from "@assets/icons/blocks.svg";
 import { FC, useState } from "react";
 import styled from "styled-components";
 import { AnimatedContainer, MenuItemHeader } from "../helpers";

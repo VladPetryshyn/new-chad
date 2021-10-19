@@ -1,6 +1,6 @@
 import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
-import { Sunrise } from "@icons/Feather/sunrise";
+import { ReactComponent as Sunrise } from "@assets/icons/sunrise.svg";
 import { useState } from "react";
 import styled from "styled-components";
 import { Item, ItemTitle } from "../utils";
@@ -27,12 +27,12 @@ export const MenuWeatherItem = () => {
   return (
     <>
       <Item onClick={toggleModalOpen}>
-        <Sunrise size="2.3em" />
+        <Sunrise height="2.3em" width="2.3em" />
         <ItemTitle>Weather</ItemTitle>
       </Item>
       <Modal isOpen={isModalOpen} onClose={toggleModalOpen}>
         <ModalContainer>
-          <Sunrise size="10em" color="black" />
+          <Sunrise width="10em" height="10em" color="black" />
           <ModalInput placeholder="City" />
           <ModalInput placeholder="Api-key (OpenWeatherMap)" />
         </ModalContainer>

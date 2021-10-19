@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { AnimatedContainer, MenuItemHeader } from "../helpers";
-import { Feather } from "@icons/Feather/feather";
+import { ReactComponent as Feather } from "@assets/icons/feather.svg";
 import { ColorsBody } from "./Body";
 import { ItemProps } from "../types";
 

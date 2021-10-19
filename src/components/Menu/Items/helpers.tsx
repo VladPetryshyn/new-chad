@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { FC } from "react";
-import { IconI } from "@icons/Feather/types";
+import { ReactComponent as Plus } from "@assets/icons/plus.svg";
+import { FC, SVGProps } from "react";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -20,14 +20,14 @@ export const Title = styled.h3`
 `;
 
 interface MenuItemContainerProps {
-  Icon: FC<IconI>;
+  Icon: FC<SVGProps<SVGSVGElement>>;
   title: string;
 }
 
 export const MenuItemHeader: FC<MenuItemContainerProps> = ({ Icon, title }) => {
   return (
     <HeaderContainer>
-      <Icon size="6em" />
+      <Icon width="6em" height="6em" />
       <Title>{title}</Title>
     </HeaderContainer>
   );
@@ -55,3 +55,25 @@ export const AnimatedContainer = styled.div`
     }
   }}
 `;
+
+const MenuCardPlusButtonContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #${(p) => p.theme.bg};
+  opacity: 0;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const MenuCardPlusButtonButton = styled(Plus)`
+  width: 3em;
+  height: 3em;
+`;
+
+export const MenuCardPlusButton = ({ onClick }: { onClick: () => void }) => (
+  <MenuCardPlusButtonContainer onClick={onClick}>
+    <MenuCardPlusButtonButton />
+  </MenuCardPlusButtonContainer>
+);

@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styled from "styled-components";
-import { Blocks } from "@icons/Feather/blocks";
-import { Feather } from "@icons/Feather/feather";
-import { Gallery } from "@icons/Feather/gallery";
+import { ReactComponent as Blocks } from "@assets/icons/blocks.svg";
+import { ReactComponent as Feather } from "@assets/icons/feather.svg";
+import { ReactComponent as Gallery } from "@assets/icons/gallery.svg";
 import { MenuItemsStates } from "../..";
 import { Credits } from "../Credits";
 import { Item, ItemTitle } from "./utils";
@@ -34,7 +34,8 @@ export const SettingsBody: FC<Props> = ({ setState }) => {
         {items.map(({ title, Icon, id }) => (
           <>
             <Item onClick={onClick(setState, id)} key={id}>
-              <Icon size="2.3em" /> <ItemTitle>{title}</ItemTitle>
+              <Icon width="2.3em" height="2.3em" />
+              <ItemTitle>{title}</ItemTitle>
             </Item>
           </>
         ))}

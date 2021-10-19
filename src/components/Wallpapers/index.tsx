@@ -5,5 +5,6 @@ export const Wallpapers = styled.img`
   height: 100vh;
   position: fixed;
   z-index: -1;
-  background: ${(props) => props.theme.bg};
+  background: url(https://wallpapercave.com/wp/wp9378834.jpg) no-repeat center
+    center;
 `;

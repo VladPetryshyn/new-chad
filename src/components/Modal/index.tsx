@@ -26,17 +26,16 @@ const Backdrop = styled.div`
 `;
 
 const Container = styled.div`
-  background: linear-gradient(
-      279.69deg,
-      rgba(112, 152, 225, 0.11) 6.12%,
-      rgba(135, 168, 227, 0.33) 54.37%,
-      rgba(112, 152, 225, 0.11) 85.5%
-    ),
-    linear-gradient(
-      113.8deg,
-      rgba(255, 255, 255, 0.56) 31.72%,
-      rgba(255, 255, 255, 0.14) 127.82%
-    );
+  background: ${(p) => `linear-gradient(
+    279.69deg,
+    #${p.theme.bg}1c 3.49%,
+    #${p.theme.primary}54 46.38%,
+    #${p.theme.bg}1c 85.5%,
+    rgba(254, 254, 254, 0) 96.42%
+  ), linear-gradient(113.8deg,
+    #${p.theme.bg}8f  31.72%,
+    #${p.theme.bg}24  127.82%
+    )`};
   backdrop-filter: blur(100px);
   border-radius: 33px;
   transition: 0.2s;

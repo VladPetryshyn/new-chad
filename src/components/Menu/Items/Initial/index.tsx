@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Cog } from "@icons/Feather/cog";
+import { ReactComponent as Cog } from "@assets/icons/cog.svg";
 import { SettingsBody } from "./Body";
 import { MenuItemHeader } from "../helpers";
 import { MenuItemsStates } from "..";

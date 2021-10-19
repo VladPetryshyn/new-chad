@@ -1,5 +1,5 @@
 import { CustomTransition } from "@components/CustomTransition";
-import { ArrowLeft } from "@icons/Feather/arrow";
+import { ReactComponent as ArrowLeft } from "@assets/icons/arrowLeft.svg";
 import { FC, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "./Colors";
@@ -42,7 +42,7 @@ export const MenuItems: FC<Props> = ({ onClose }) => {
             : onClose
         }
       >
-        <ArrowLeft size="2.3em" />
+        <ArrowLeft width="2.3em" height="2.3em" />
       </ButtonBack>
       <CustomTransition isOpen={state === MenuItemsStates.initial}>
         {(state: string) => <Settings setState={setState} state={state} />}

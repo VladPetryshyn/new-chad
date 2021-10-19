@@ -1,4 +1,4 @@
-import { Gallery } from "@icons/Feather/gallery";
+import { ReactComponent as Gallery } from "@assets/icons/gallery.svg";
 import { FC } from "react";
 import styled from "styled-components";
 import { AnimatedContainer, MenuItemHeader } from "../helpers";

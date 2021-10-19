@@ -1,5 +1,5 @@
 import { Modal } from "@components/Modal";
-import { Upload } from "@icons/Feather/upload";
+import { ReactComponent as Upload } from "@assets/icons/upload.svg";
 import { useState } from "react";
 import styled from "styled-components";
 import { Item, ItemTitle } from "../utils";
@@ -34,7 +34,7 @@ export const MenuImportConfigItem = () => {
   return (
     <>
       <Item onClick={toggleModalOpen}>
-        <Upload size="2.3em" />
+        <Upload height="2.3em" width="2.3em" />
         <ItemTitle>Import config</ItemTitle>
       </Item>
       <>
@@ -42,7 +42,7 @@ export const MenuImportConfigItem = () => {
         <Modal isOpen={isModalOpen} onClose={toggleModalOpen}>
           <label htmlFor="file_input">
             <ModalContainer>
-              <Upload size="10em" color="black" />
+              <Upload height="10em" width="10em" />
               <ModalHeader>Drag or select your file </ModalHeader>
             </ModalContainer>
           </label>

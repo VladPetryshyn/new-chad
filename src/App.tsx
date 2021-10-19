@@ -1,34 +1,40 @@
 import { Grid } from "@components/Grid";
 import { Menu } from "@components/Menu";
-import { createContext, useEffect, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import { initialThemes } from "@utils/constants";
+import { useAppDispatch, useAppSelector } from "@utils/hooks/store";
+import { useEffect } from "react";
+import styled, { ThemeProvider } from "styled-components";
 import { Wallpapers } from "./components/Wallpapers";
-import { initialThemes } from "./utils/constants";
+import { setThemeAC } from "./store/theme/actions";
+import { setThemesAC } from "./store/themes/actions";
 
-export const ThemeContext = createContext<(theme: DefaultTheme) => void>(
-  () => {},
-);
+const Container = styled.div`
+  color: #${(p) => p.theme.fg};
+`;
 
 function App() {
-  const [theme, setTheme] = useState(initialThemes.ice);
+  const theme = useAppSelector(({ theme }) => theme);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const theme = localStorage.getItem("currentTheme");
-    const themes = localStorage.getItem("themes");
-    if (theme && themes) setTheme(JSON.parse(themes)[theme]);
+    const localTheme = localStorage.getItem("currentTheme");
+    const localThemes = localStorage.getItem("themes");
+
+    if (localTheme) dispatch(setThemeAC(JSON.parse(localTheme)));
+    if (localThemes) dispatch(setThemesAC(JSON.parse(localThemes)));
     else {
       localStorage.setItem("themes", JSON.stringify(initialThemes));
-      localStorage.setItem("currentTheme", "ice");
+      localStorage.setItem("currentTheme", JSON.stringify(theme));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <ThemeContext.Provider value={setTheme}>
+    <ThemeProvider theme={theme.colors}>
+      <Container>
         <Wallpapers />
         <Grid />
         <Menu />
-      </ThemeContext.Provider>
+      </Container>
     </ThemeProvider>
   );
 }

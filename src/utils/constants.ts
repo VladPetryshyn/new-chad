@@ -1,8 +1,15 @@
-export const initialThemes = {
-  ice: {
-    // bg: "rgb(255, 254, 254, 0.8)",
-    fg: "white",
-    bg: "url(https://wallpapercave.com/wp/wp9378834.jpg) no-repeat center center",
-    text: "#000000",
+import { DefaultTheme } from "styled-components";
+
+export const initialThemes: Theme[] = [
+  {
+    id: "73874cca-d53c-4513-a983-a686b036a130",
+    name: "something",
+    colors: { bg: "000000", fg: "ffffff", primary: "700B97" },
   },
-};
+];
+
+export interface Theme {
+  name: string;
+  colors: DefaultTheme;
+  id: string;
+}

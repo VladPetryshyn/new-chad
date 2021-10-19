@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const MenuBody = styled.div`
-  background: rgba(255, 254, 254, 0.8);
+  background: #${(p) => p.theme.bg}cc;
   transition: 0.4s transform;
   width: 35vw;
   height: 100vh;
@@ -37,8 +37,8 @@ export const Button = styled.div`
 export const Backdrop = styled.div`
   background: linear-gradient(
     113.8deg,
-    rgba(255, 255, 255, 0.56) 31.72%,
-    rgba(255, 255, 255, 0.14) 127.82%
+    #${(p) => p.theme.bg}8F 31.72%,
+    #${(p) => p.theme.bg}24 127.82%
   );
   backdrop-filter: blur(10px);
   width: 100vw;

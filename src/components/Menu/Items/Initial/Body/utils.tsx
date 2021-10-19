@@ -1,5 +1,4 @@
-import { IconI } from "@icons/Feather/types";
-import { FC } from "react";
+import { FC, SVGProps } from "react";
 import styled from "styled-components";
 
 export const Item = styled.div`
@@ -21,7 +20,7 @@ export const ItemTitle = styled.span`
 `;
 
 interface MenuItemProps {
-  Icon: FC<IconI>;
+  Icon: FC<SVGProps<SVGSVGElement>>;
   onClick: () => void;
   text: string;
 }
@@ -29,7 +28,7 @@ interface MenuItemProps {
 export const MenuItem: FC<MenuItemProps> = ({ Icon, text, onClick }) => {
   return (
     <Item onClick={onClick}>
-      <Icon size="2.3em" />
+      <Icon width="2.3em" height="2.3em" />
       <ItemTitle>{text}</ItemTitle>
     </Item>
   );
