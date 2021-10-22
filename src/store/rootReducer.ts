@@ -1,7 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
+import thunk, { ThunkAction } from "redux-thunk";
 import { themeReducer } from "./theme";
+import { ThemeActions } from "./theme/actions";
 import { themesReducer } from "./themes";
+import { ThemesActions } from "./themes/actions";
 
 export const rootReducer = combineReducers({
   theme: themeReducer,
@@ -11,4 +13,10 @@ export const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppActions = ThemesActions | ThemeActions;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  AppActions
+>;

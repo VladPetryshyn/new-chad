@@ -13,3 +13,12 @@ export interface Theme {
   colors: DefaultTheme;
   id: string;
 }
+
+export type DefaultThemeKeys = keyof DefaultTheme;
+
+export const randomThemeNames = [
+  "bubble",
+  "poodle",
+  "spoon",
+  "colorful sprout",
+];

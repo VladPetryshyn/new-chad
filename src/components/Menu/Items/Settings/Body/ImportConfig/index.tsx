@@ -12,12 +12,14 @@ const ModalContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 3em;
-  border: 0.5em dashed white;
+  border: 0.5em dashed #${(p) => p.theme.fg};
+  color: #${(p) => p.theme.fg};
 `;
 
 const ModalHeader = styled.h2`
   font-size: 2.5em;
   margin: 0.5em 0;
+  color: #${(p) => p.theme.fg};
 `;
 
 const FileInput = styled.input`
@@ -34,7 +36,7 @@ export const MenuImportConfigItem = () => {
   return (
     <>
       <Item onClick={toggleModalOpen}>
-        <Upload height="2.3em" width="2.3em" />
+        <Upload width="2.3em" height="2.3em" />
         <ItemTitle>Import config</ItemTitle>
       </Item>
       <>

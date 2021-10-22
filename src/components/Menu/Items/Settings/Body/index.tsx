@@ -54,16 +54,6 @@ const items = [
     Icon: Blocks,
     id: 1,
   },
-  // {
-  //   title: "Backup config",
-  //   Icon: Download,
-  //   id: 2,
-  // },
-  // {
-  //   title: "Import config",
-  //   Icon: Upload,
-  //   id: 3,
-  // },
   {
     title: "Color palettes",
     Icon: Feather,
@@ -72,6 +62,6 @@ const items = [
   {
     title: "Wallpapers",
     Icon: Gallery,
-    id: 5,
+    id: 6,
   },
 ];

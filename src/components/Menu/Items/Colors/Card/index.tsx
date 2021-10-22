@@ -1,4 +1,4 @@
-import { Theme } from "@utils/constants";
+import { DefaultThemeKeys, Theme } from "@utils/constants";
 import { ReactComponent as Trash } from "@assets/icons/trash.svg";
 import { ReactComponent as Check } from "@assets/icons/check.svg";
 import { FC } from "react";
@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useAppDispatch } from "@utils/hooks/store";
 import { setThemeAC } from "../../../../../store/theme/actions";
 import { deleteThemeAC } from "../../../../../store/themes/actions";
+import { Color } from "./Color";
 
 const iconSize = "2em";
 
@@ -34,7 +35,7 @@ const ThemeName = styled.h3`
   color: #${(p) => p.theme.fg};
 `;
 
-const EditIcon = styled(Trash)`
+const TrashIcon = styled(Trash)`
   width: ${iconSize};
   height: ${iconSize};
   cursor: pointer;
@@ -44,18 +45,6 @@ const ApplyIcon = styled(Check)`
   width: ${iconSize};
   height: ${iconSize};
   cursor: pointer;
-`;
-
-const Color = styled.div`
-  height: 15em;
-  flex: 1;
-  background: ${(props: { color: string }) => props.color};
-  &:first-child {
-    border-bottom-left-radius: 2.5em;
-  }
-  &:last-child {
-    border-bottom-right-radius: 2.5em;
-  }
 `;
 
 interface Props {
@@ -79,11 +68,18 @@ export const ColorCard: FC<Props> = ({ theme }) => {
       <Header>
         <ApplyIcon onClick={setTheme} />
         <ThemeName>{name}</ThemeName>
-        <EditIcon />
+        <TrashIcon onClick={deleteTheme} />
       </Header>
       <Body>
-        {Object.values(colors).map((v, idx) => (
-          <Color color={`#${v}`} key={idx} />
+        {Object.entries(colors).map(([k, v], idx) => (
+          <Color
+            color={`#${v}`}
+            key={idx}
+            colorName={k as DefaultThemeKeys}
+            themeId={id}
+          >
+            {k}
+          </Color>
         ))}
       </Body>
     </Container>

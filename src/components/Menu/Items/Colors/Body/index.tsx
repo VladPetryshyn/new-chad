@@ -1,4 +1,6 @@
+import { useAppSelector } from "@utils/hooks/store";
 import styled from "styled-components";
+import { AddPalette } from "../AddPalette";
 import { ColorCard } from "../Card";
 
 const Container = styled.div`
@@ -11,36 +13,20 @@ const Container = styled.div`
 `;
 
 export const ColorsBody = () => {
+  const themes = useAppSelector(({ themes }) => themes);
+
   return (
     <Container>
-      <ColorCard
-        theme={{
-          name: "Blue",
-          id: "",
-          colors: { bg: "000000", fg: "ffffff", primary: "700B97" },
-        }}
-      />
-      <ColorCard
-        theme={{
-          name: "Test",
-          id: "",
-          colors: { bg: "", fg: "", primary: "" },
-        }}
-      />
-      <ColorCard
-        theme={{
-          name: "Test",
-          id: "",
-          colors: { bg: "", fg: "", primary: "" },
-        }}
-      />
-      <ColorCard
-        theme={{
-          name: "Test",
-          id: "",
-          colors: { bg: "", fg: "", primary: "" },
-        }}
-      />
+      {themes.map(({ id, ...theme }) => (
+        <ColorCard
+          theme={{
+            id,
+            ...theme,
+          }}
+          key={id}
+        />
+      ))}
+      <AddPalette />
     </Container>
   );
 };

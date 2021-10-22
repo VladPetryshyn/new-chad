@@ -1,6 +1,6 @@
 import { Switch } from "@components/Switch";
 import { ReactComponent as Blocks } from "@assets/icons/blocks.svg";
-import { FC, useState } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import { AnimatedContainer, MenuItemHeader } from "../helpers";
 import { ItemProps } from "../types";
@@ -25,7 +25,6 @@ const ItemText = styled.h3`
 `;
 
 export const Widgets: FC<ItemProps> = ({ state }) => {
-  const [images, setImages] = useState([]);
   return (
     <AnimatedContainer state={state}>
       <MenuItemHeader Icon={Blocks} title="Widgets" />

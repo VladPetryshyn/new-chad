@@ -74,6 +74,7 @@
     "ts-pnp": "1.2.0",
     "typescript": "^4.1.2",
     "url-loader": "4.1.1",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.0.1",
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
@@ -164,6 +165,7 @@
     "@types/react-redux": "^7.1.19",
     "@types/react-transition-group": "^4.4.2",
     "@types/redux": "^3.6.0",
-    "@types/styled-components": "^5.1.12"
+    "@types/styled-components": "^5.1.12",
+    "@types/uuid": "^8.3.1"
   }
 }

@@ -3,7 +3,7 @@ import { ReactComponent as ArrowLeft } from "@assets/icons/arrowLeft.svg";
 import { FC, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "./Colors";
-import { Settings } from "./Initial";
+import { Settings } from "./Settings";
 import { Wallpapers } from "./Wallpapers";
 import { Widgets } from "./Widgets";
 

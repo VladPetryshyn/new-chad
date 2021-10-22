@@ -5,7 +5,7 @@ import { validateURL } from "@utils/index";
 
 const WallpapersInput = styled(Input)`
   flex: 2;
-  background: orange;
+  background: #${(p) => p.theme.bg};
   border-radius: 50px;
   text-align: center;
 `;
@@ -19,7 +19,7 @@ const SubmitBtn = styled.button`
   outline: none;
   border: none;
   flex: 0.5;
-  background: orange;
+  background: #${(p) => p.theme.primary};
   padding: 0.5em;
   border-radius: 50px;
 `;

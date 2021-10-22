@@ -10,6 +10,7 @@ const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #${(p) => p.theme.fg};
 `;
 
 const ModalInput = styled(Input)`

@@ -59,17 +59,26 @@ export const AnimatedContainer = styled.div`
 const MenuCardPlusButtonContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: #${(p) => p.theme.bg};
+  background: #${(p) => p.theme.bg}66;
+  border-radius: 2.5em;
+  top: 0;
   opacity: 0;
   transition: all 0.3s ease;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   &:hover {
     opacity: 1;
   }
 `;
 
 const MenuCardPlusButtonButton = styled(Plus)`
-  width: 3em;
-  height: 3em;
+  width: 5em;
+  height: 5em;
+  position: relative;
+  top: calc(50% - 2.5em);
+  left: calc(50% - 2.5em);
 `;
 
 export const MenuCardPlusButton = ({ onClick }: { onClick: () => void }) => (

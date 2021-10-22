@@ -26,6 +26,8 @@ function App() {
       localStorage.setItem("themes", JSON.stringify(initialThemes));
       localStorage.setItem("currentTheme", JSON.stringify(theme));
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
