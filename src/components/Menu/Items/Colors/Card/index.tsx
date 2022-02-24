@@ -1,4 +1,4 @@
-import { DefaultThemeKeys, Theme } from "@utils/constants";
+import { DefaultThemeKeys, Theme } from "@utils/constants/themes";
 import { ReactComponent as Trash } from "@assets/icons/trash.svg";
 import { ReactComponent as Check } from "@assets/icons/check.svg";
 import { FC } from "react";
@@ -11,7 +11,7 @@ import { Color } from "./Color";
 const iconSize = "2em";
 
 const Container = styled.div`
-  background: #${(p) => p.theme.bg};
+  background: ${(p) => p.theme.bg};
   border-radius: 2.5em;
 
   & + & {
@@ -32,7 +32,7 @@ const Body = styled.main`
 
 const ThemeName = styled.h3`
   font-size: 2.5em;
-  color: #${(p) => p.theme.fg};
+  color: ${(p) => p.theme.fg};
 `;
 
 const TrashIcon = styled(Trash)`
@@ -52,36 +52,36 @@ interface Props {
 }
 
 export const ColorCard: FC<Props> = ({ theme }) => {
-  const { name, colors, id } = theme;
+	const { name, colors, id } = theme;
 
-  const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch();
 
-  const setTheme = () => {
-    localStorage.setItem("currentTheme", JSON.stringify(theme));
-    dispatch(setThemeAC(theme));
-  };
+	const setTheme = () => {
+		localStorage.setItem("currentTheme", JSON.stringify(theme));
+		dispatch(setThemeAC(theme));
+	};
 
-  const deleteTheme = () => dispatch(deleteThemeAC(id));
+	const deleteTheme = () => dispatch(deleteThemeAC(id));
 
-  return (
-    <Container>
-      <Header>
-        <ApplyIcon onClick={setTheme} />
-        <ThemeName>{name}</ThemeName>
-        <TrashIcon onClick={deleteTheme} />
-      </Header>
-      <Body>
-        {Object.entries(colors).map(([k, v], idx) => (
-          <Color
-            color={`#${v}`}
-            key={idx}
-            colorName={k as DefaultThemeKeys}
-            themeId={id}
-          >
-            {k}
-          </Color>
-        ))}
-      </Body>
-    </Container>
-  );
+	return (
+		<Container>
+			<Header>
+				<ApplyIcon onClick={setTheme} />
+				<ThemeName>{name}</ThemeName>
+				<TrashIcon onClick={deleteTheme} />
+			</Header>
+			<Body>
+				{Object.entries(colors).map(([k, v], idx) => (
+					<Color
+						color={v}
+						key={idx}
+						colorName={k as DefaultThemeKeys}
+						themeId={id}
+					>
+						{k}
+					</Color>
+				))}
+			</Body>
+		</Container>
+	);
 };

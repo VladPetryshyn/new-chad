@@ -1,4 +1,4 @@
-import { DefaultThemeKeys } from "@utils/constants";
+import { DefaultThemeKeys } from "@utils/constants/themes";
 import { useToggle } from "@utils/hooks";
 import { useAppDispatch } from "@utils/hooks/store";
 import { invertColor } from "@utils/index";
@@ -17,7 +17,7 @@ const Body = styled.div`
   height: 15em;
   ${(props: { color: string }) => `
                 background: ${props.color};
-color: #${invertColor(props.color)};`}
+color: ${invertColor(props.color)};`}
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,32 +60,32 @@ const Container = styled.div`
 `;
 
 export const Color: FC<Props> = ({ children, color, themeId, colorName }) => {
-  const dispatch = useAppDispatch();
-  const [state, toggle] = useToggle();
-  const [newColor, setNewColor] = useState(color);
+	const dispatch = useAppDispatch();
+	const [state, toggle] = useToggle();
+	const [newColor, setNewColor] = useState(color);
 
-  const onClose = () => {
-    toggle();
-    dispatch(
-      updateThemeAC({
-        themeId,
-        colorName,
-        colorValue: newColor.replace("#", ""),
-      }),
-    );
-  };
+	const onClose = () => {
+		toggle();
+		dispatch(
+			updateThemeAC({
+				themeId,
+				colorName,
+				colorValue: newColor,
+			}),
+		);
+	};
 
-  return (
-    <Container>
-      <Body color={newColor} onClick={toggle}>
-        {children}
-      </Body>
-      {state && (
-        <ColorPickerContainer>
-          <ColorPickerBackdrop onClick={onClose} />
-          <HexColorPicker color={newColor} onChange={setNewColor} />
-        </ColorPickerContainer>
-      )}
-    </Container>
-  );
+	return (
+		<Container>
+			<Body color={newColor} onClick={toggle}>
+				{children}
+			</Body>
+			{state && (
+				<ColorPickerContainer>
+					<ColorPickerBackdrop onClick={onClose} />
+					<HexColorPicker color={newColor} onChange={setNewColor} />
+				</ColorPickerContainer>
+			)}
+		</Container>
+	);
 };

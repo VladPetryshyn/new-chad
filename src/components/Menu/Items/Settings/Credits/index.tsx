@@ -1,4 +1,4 @@
-import { Modal } from "@components/Modal";
+import { Modal } from "@components/Modals";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -15,19 +15,19 @@ const Text = styled.span`
 `;
 
 export const Credits = () => {
-  const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
-  const onClose = () => {
-    setIsOpen(false);
-  };
+	const onClose = () => {
+		setIsOpen(false);
+	};
 
-  return (
-    <div>
-      <Modal onClose={onClose} isOpen={isOpen}>
-        <h2>Programming: Vlad Petryshyn</h2>
-        <h2>Design: Vlad Petryshyn, Katya Vartanyan</h2>
-      </Modal>
-      <Text onClick={() => setIsOpen(true)}>credits</Text>
-    </div>
-  );
+	return (
+		<div>
+			<Modal onClose={onClose} isOpen={isOpen}>
+				<h2>Programming: Vlad Petryshyn</h2>
+				<h2>Design: Vlad Petryshyn, Katya Vartanyan</h2>
+			</Modal>
+			<Text onClick={() => setIsOpen(true)}>credits</Text>
+		</div>
+	);
 };

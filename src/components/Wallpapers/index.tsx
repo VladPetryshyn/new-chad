@@ -1,10 +1,16 @@
+import { useAppSelector } from "@utils/hooks/store";
 import styled from "styled-components";
 
-export const Wallpapers = styled.img`
-  width: 100vw;
-  height: 100vh;
+const Container = styled.div<{ wallpaper: string }>`
+  width: 100%;
+  height: 100%;
   position: fixed;
   z-index: -1;
-  background: url(https://wallpapercave.com/wp/wp9378834.jpg) no-repeat center
-    center;
+  background: url(${(p) => p.wallpaper}) no-repeat center/cover;
 `;
+
+export const Wallpapers = () => {
+	const wallpaper = useAppSelector(({ wallpaper }) => wallpaper);
+
+	return <Container wallpaper={wallpaper} />;
+};

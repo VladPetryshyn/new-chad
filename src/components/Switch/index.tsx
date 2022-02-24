@@ -37,9 +37,9 @@ const Input = styled.input`
 `;
 
 export const Switch = () => {
-  return (
-    <Container>
-      <Input type="checkbox" />
-    </Container>
-  );
+	return (
+		<Container>
+			<Input type="checkbox" />
+		</Container>
+	);
 };

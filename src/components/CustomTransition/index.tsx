@@ -7,20 +7,20 @@ interface Props {
 }
 
 export const CustomTransition: FC<Props> = ({
-  children,
-  isOpen,
-  timeout = { enter: 0, exit: 300 },
+	children,
+	isOpen,
+	timeout = { enter: 0, exit: 300 },
 }) => {
-  return (
-    <Transition
-      in={isOpen}
-      unmountOnExit={true}
-      addEndListener={(node: HTMLElement, done: () => void) => {
-        node.addEventListener("transitionend", done, false);
-      }}
-      timeout={timeout}
-    >
-      {children}
-    </Transition>
-  );
+	return (
+		<Transition
+			in={isOpen}
+			unmountOnExit={true}
+			addEndListener={(node: HTMLElement, done: () => void) => {
+				node.addEventListener("transitionend", done, false);
+			}}
+			timeout={timeout}
+		>
+			{children}
+		</Transition>
+	);
 };

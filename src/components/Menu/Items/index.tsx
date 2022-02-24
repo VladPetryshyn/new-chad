@@ -9,6 +9,7 @@ import { Widgets } from "./Widgets";
 
 const Container = styled.div`
   position: relative;
+  z-index: 4;
 `;
 
 const ButtonBack = styled.button`
@@ -32,30 +33,30 @@ interface Props {
 }
 
 export const MenuItems: FC<Props> = ({ onClose }) => {
-  const [state, setState] = useState(MenuItemsStates.initial);
-  return (
-    <Container>
-      <ButtonBack
-        onClick={
-          state !== MenuItemsStates.initial
-            ? () => setState(MenuItemsStates.initial)
-            : onClose
-        }
-      >
-        <ArrowLeft width="2.3em" height="2.3em" />
-      </ButtonBack>
-      <CustomTransition isOpen={state === MenuItemsStates.initial}>
-        {(state: string) => <Settings setState={setState} state={state} />}
-      </CustomTransition>
-      <CustomTransition isOpen={state === MenuItemsStates.colors}>
-        {(state: string) => <Colors state={state} />}
-      </CustomTransition>
-      <CustomTransition isOpen={state === MenuItemsStates.widgets}>
-        {(state: string) => <Widgets state={state} />}
-      </CustomTransition>
-      <CustomTransition isOpen={state === MenuItemsStates.wallpapers}>
-        {(state: string) => <Wallpapers state={state} />}
-      </CustomTransition>
-    </Container>
-  );
+	const [state, setState] = useState(MenuItemsStates.initial);
+	return (
+		<Container>
+			<ButtonBack
+				onClick={
+					state !== MenuItemsStates.initial
+						? () => setState(MenuItemsStates.initial)
+						: onClose
+				}
+			>
+				<ArrowLeft width="2.3em" height="2.3em" />
+			</ButtonBack>
+			<CustomTransition isOpen={state === MenuItemsStates.initial}>
+				{(state: string) => <Settings setState={setState} state={state} />}
+			</CustomTransition>
+			<CustomTransition isOpen={state === MenuItemsStates.colors}>
+				{(state: string) => <Colors state={state} />}
+			</CustomTransition>
+			<CustomTransition isOpen={state === MenuItemsStates.widgets}>
+				{(state: string) => <Widgets state={state} />}
+			</CustomTransition>
+			<CustomTransition isOpen={state === MenuItemsStates.wallpapers}>
+				{(state: string) => <Wallpapers state={state} />}
+			</CustomTransition>
+		</Container>
+	);
 };

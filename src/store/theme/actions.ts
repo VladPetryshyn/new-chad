@@ -1,8 +1,8 @@
-import { Theme } from "@utils/constants";
+import { Theme } from "@utils/constants/themes";
 
 export const setThemeAC = (payload: Theme): setTheme => ({
-  type: "theme/SET_THEME",
-  payload,
+	type: "theme/SET_THEME",
+	payload,
 });
 
 export interface setTheme {

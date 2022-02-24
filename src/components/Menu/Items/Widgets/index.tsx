@@ -1,51 +1,25 @@
-import { Switch } from "@components/Switch";
 import { ReactComponent as Blocks } from "@assets/icons/blocks.svg";
+import { renderObjectItem } from "@utils/index";
+import { WidgetItems } from "@utils/constants/widgets";
 import { FC } from "react";
-import styled from "styled-components";
-import { AnimatedContainer, MenuItemHeader } from "../helpers";
+import { AnimatedContainer, MenuItemHeader, ScrollBody } from "../helpers";
 import { ItemProps } from "../types";
-
-const BodyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 3em;
-  padding: 0 2em 2em 2em;
-`;
-const Item = styled.div`
-  display: flex;
-  & + & {
-    margin-top: 2em;
-  }
-`;
-const ItemText = styled.h3`
-  font-size: 3em;
-  margin-right: 2em;
-  min-width: 5em;
-`;
+import { Widget } from "./Widget";
+import { useAppSelector } from "@utils/hooks/store";
 
 export const Widgets: FC<ItemProps> = ({ state }) => {
-  return (
-    <AnimatedContainer state={state}>
-      <MenuItemHeader Icon={Blocks} title="Widgets" />
-      <BodyContainer>
-        <Item>
-          <ItemText>Bookmarks</ItemText>
-          <Switch />
-        </Item>
-        <Item>
-          <ItemText>Search</ItemText>
-          <Switch />
-        </Item>
-        <Item>
-          <ItemText>Weather</ItemText>
-          <Switch />
-        </Item>
-        <Item>
-          <ItemText>Notes</ItemText>
-          <Switch />
-        </Item>
-      </BodyContainer>
-    </AnimatedContainer>
-  );
+	const widgets = useAppSelector(({ widgets }) => widgets);
+
+	return (
+		<AnimatedContainer state={state}>
+			<MenuItemHeader Icon={Blocks} title="Widgets" />
+			<ScrollBody>
+				{widgets.map(({ widget, isActive }) => (
+					<Widget widget={widget} isActive={isActive} key={widget}>
+						{renderObjectItem(WidgetItems[widget])}
+					</Widget>
+				))}
+			</ScrollBody>
+		</AnimatedContainer>
+	);
 };

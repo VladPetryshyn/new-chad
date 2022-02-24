@@ -7,10 +7,11 @@ const Container = styled.div`
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 3;
 `;
 
 const MenuBody = styled.div`
-  background: #${(p) => p.theme.bg}cc;
+  background: ${(p) => p.theme.bg}cc;
   transition: 0.4s transform;
   width: 35vw;
   height: 100vh;
@@ -18,13 +19,15 @@ const MenuBody = styled.div`
   stroke: black;
   overflow: hidden;
   transform: ${(p: { state: string }) => {
-    switch (p.state) {
-      case "entered":
-        return "translateX(0%)";
-      default:
-        return "translateX(100%)";
-    }
-  }}};
+		switch (p.state) {
+		case "entered":
+			return "translateX(0%)";
+		default:
+			return "translateX(100%)";
+		}
+	}}};
+  font-size: 1.3rem;
+  z-index: 2;
 `;
 
 export const Button = styled.div`
@@ -37,10 +40,11 @@ export const Button = styled.div`
 export const Backdrop = styled.div`
   background: linear-gradient(
     113.8deg,
-    #${(p) => p.theme.bg}8F 31.72%,
-    #${(p) => p.theme.bg}24 127.82%
+    ${(p) => p.theme.bg}8F 31.72%,
+    ${(p) => p.theme.bg}24 127.82%
   );
   backdrop-filter: blur(10px);
+  z-index: 1;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -52,33 +56,34 @@ export const Backdrop = styled.div`
 
 export const Line = styled.span`
   width: 30px;
-  background: black;
+  background: ${(p) => p.theme.bg};
   height: 4px;
   display: block;
   margin-top: 4px;
 `;
+
 export const Menu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const onClose = () => setIsOpen((open) => !open);
-  return (
-    <Container>
-      {!isOpen && (
-        <Button onClick={onClose}>
-          {[...Array(3)].map((_, i) => (
-            <Line key={i} />
-          ))}
-        </Button>
-      )}
-      <CustomTransition isOpen={isOpen} timeout={{ enter: 0, exit: 500 }}>
-        {(state: string) => <Backdrop state={state} onClick={onClose} />}
-      </CustomTransition>
-      <CustomTransition isOpen={isOpen}>
-        {(state: string) => (
-          <MenuBody state={state}>
-            <MenuItems onClose={onClose} />
-          </MenuBody>
-        )}
-      </CustomTransition>
-    </Container>
-  );
+	const [isOpen, setIsOpen] = useState(false);
+	const onClose = () => setIsOpen((open) => !open);
+	return (
+		<Container>
+			{!isOpen && (
+				<Button onClick={onClose}>
+					{[...Array(3)].map((_, i) => (
+						<Line key={i} />
+					))}
+				</Button>
+			)}
+			<CustomTransition isOpen={isOpen} timeout={{ enter: 0, exit: 500 }}>
+				{(state: string) => <Backdrop state={state} onClick={onClose} />}
+			</CustomTransition>
+			<CustomTransition isOpen={isOpen}>
+				{(state: string) => (
+					<MenuBody state={state}>
+						<MenuItems onClose={onClose} />
+					</MenuBody>
+				)}
+			</CustomTransition>
+		</Container>
+	);
 };

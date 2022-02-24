@@ -1,5 +1,5 @@
 import { Input } from "@components/Input";
-import { Modal } from "@components/Modal";
+import { Modal } from "@components/Modals";
 import { ReactComponent as Sunrise } from "@assets/icons/sunrise.svg";
 import { useState } from "react";
 import styled from "styled-components";
@@ -21,23 +21,27 @@ const ModalInput = styled(Input)`
   text-align: center;
 `;
 
-export const MenuWeatherItem = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const ModalIcon = styled(Sunrise)`
+  color: ${(p) => p.theme.fg};
+`;
 
-  const toggleModalOpen = () => setIsModalOpen((isOpen) => !isOpen);
-  return (
-    <>
-      <Item onClick={toggleModalOpen}>
-        <Sunrise height="2.3em" width="2.3em" />
-        <ItemTitle>Weather</ItemTitle>
-      </Item>
-      <Modal isOpen={isModalOpen} onClose={toggleModalOpen}>
-        <ModalContainer>
-          <Sunrise width="10em" height="10em" color="black" />
-          <ModalInput placeholder="City" />
-          <ModalInput placeholder="Api-key (OpenWeatherMap)" />
-        </ModalContainer>
-      </Modal>
-    </>
-  );
+export const MenuWeatherItem = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const toggleModalOpen = () => setIsModalOpen((isOpen) => !isOpen);
+	return (
+		<>
+			<Item onClick={toggleModalOpen}>
+				<Sunrise height="2.3em" width="2.3em" />
+				<ItemTitle>Weather</ItemTitle>
+			</Item>
+			<Modal isOpen={isModalOpen} onClose={toggleModalOpen}>
+				<ModalContainer>
+					<ModalIcon width="10em" height="10em" />
+					<ModalInput placeholder="City" />
+					<ModalInput placeholder="Api-key (OpenWeatherMap)" />
+				</ModalContainer>
+			</Modal>
+		</>
+	);
 };
