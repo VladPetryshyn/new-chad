@@ -21,7 +21,6 @@ export interface SelectProps {
   isOpen: boolean;
 }
 
-// TODO add animation
 export const Select: FC<SelectProps> = ({ children, isOpen }) => {
 	return (
 		<CustomTransition isOpen={isOpen} timeout={{ enter: 0, exit: 200 }}>

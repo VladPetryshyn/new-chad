@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
-import { onAddT } from "..";
+import { onAddT, onChangeT, onRemoveT } from "../../types";
 import { Task, TaskProps } from "../Task";
 import { PlusForm } from "./AddTask";
+import { TasksColumnHeaderDeleteAllIcon } from "./DeleteAllTasks";
 
 const Container = styled.div`
   display: flex;
@@ -21,8 +22,9 @@ const Container = styled.div`
 const Head = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-bottom: 1.5px solid ${(p) => p.theme.fg};
+  padding: 0px 1em 0.7em 1em;
   padding-bottom: 0.7em;
 `;
 
@@ -42,26 +44,45 @@ export interface TaskColumnProps {
   title: string;
   tasks: Array<TaskProps>;
   onAdd: onAddT;
+  onRemove: onRemoveT;
+  onDeleteAll: () => void;
+  onChangeTask: onChangeT;
 }
 
 interface Props extends TaskColumnProps {
   index: number;
 }
 
-export const TaskColumn: FC<Props> = ({ title, tasks, index, onAdd }) => {
+export const TaskColumn: FC<Props> = ({
+	title,
+	tasks,
+	index,
+	onAdd,
+	onRemove,
+	onDeleteAll,
+	onChangeTask,
+}) => {
 	return (
 		<Draggable draggableId={title} index={index}>
 			{(provided) => (
 				<Container {...provided.draggableProps} ref={provided.innerRef}>
 					<Head>
+						<PlusForm onAdd={onAdd} />
 						<Title {...provided.dragHandleProps}>{title}</Title>
-						<PlusForm onAdd={onAdd(title)} />
+						<TasksColumnHeaderDeleteAllIcon onClick={onDeleteAll} />
 					</Head>
 					<Droppable droppableId={title} type="task">
 						{(provided) => (
 							<Content ref={provided.innerRef} {...provided.droppableProps}>
-								{tasks.map((task, index) => (
-									<Task {...task} index={index} key={task.id} />
+								{tasks.map(({ id, ...task }, index) => (
+									<Task
+										{...task}
+										index={index}
+										id={id}
+										key={id}
+										onRemove={onRemove(id)}
+										onChange={onChangeTask(id)}
+									/>
 								))}
 								{provided.placeholder}
 							</Content>

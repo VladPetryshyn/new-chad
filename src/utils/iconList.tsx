@@ -10,7 +10,7 @@ import { ReactComponent as Edit } from "@assets/icons/edit.svg";
 import { ReactComponent as Feather } from "@assets/icons/feather.svg";
 import { ReactComponent as Gallery } from "@assets/icons/gallery.svg";
 import { ReactComponent as Google } from "@assets/icons/google.svg";
-import { ReactComponent as MoreHorizontal } from "@assets/icons/more-horizontal.svg";
+import { ReactComponent as MoreHorizontal } from "@assets/icons/moreHorizontal.svg";
 import { ReactComponent as Plus } from "@assets/icons/plus.svg";
 import { ReactComponent as Search } from "@assets/icons/search.svg";
 import { ReactComponent as Sunrise } from "@assets/icons/sunrise.svg";
@@ -38,6 +38,4 @@ export const iconsList = {
 	trash: <Trash />,
 	upload: <Upload />,
 	yahoo: <Yahoo />,
-};
-
-export type IconsListKeys = keyof typeof iconsList;
+};export type IconsListKeys = keyof typeof iconsList;

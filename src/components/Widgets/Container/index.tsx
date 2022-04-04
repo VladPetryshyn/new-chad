@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as More } from "@assets/icons/more-horizontal.svg";
+import { ReactComponent as More } from "@assets/icons/moreHorizontal.svg";
 import { FC } from "react";
 
 const Button = styled.button`

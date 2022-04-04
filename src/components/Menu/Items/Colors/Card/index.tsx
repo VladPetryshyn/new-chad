@@ -30,11 +30,6 @@ const Body = styled.main`
   display: flex;
 `;
 
-const ThemeName = styled.h3`
-  font-size: 2.5em;
-  color: ${(p) => p.theme.fg};
-`;
-
 const TrashIcon = styled(Trash)`
   width: ${iconSize};
   height: ${iconSize};
@@ -52,7 +47,7 @@ interface Props {
 }
 
 export const ColorCard: FC<Props> = ({ theme }) => {
-	const { name, colors, id } = theme;
+	const { colors, id } = theme;
 
 	const dispatch = useAppDispatch();
 
@@ -67,7 +62,6 @@ export const ColorCard: FC<Props> = ({ theme }) => {
 		<Container>
 			<Header>
 				<ApplyIcon onClick={setTheme} />
-				<ThemeName>{name}</ThemeName>
 				<TrashIcon onClick={deleteTheme} />
 			</Header>
 			<Body>

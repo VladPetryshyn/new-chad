@@ -31,12 +31,10 @@ export const SettingsBody: FC<Props> = ({ setState }) => {
 		<>
 			<List>
 				{items.map(({ title, Icon, id }) => (
-					<>
-						<Item onClick={onClick(setState, id)} key={id}>
-							<Icon width="2.3em" height="2.3em" />
-							<ItemTitle>{title}</ItemTitle>
-						</Item>
-					</>
+					<Item onClick={onClick(setState, id)} key={id}>
+						<Icon width="2.3em" height="2.3em" />
+						<ItemTitle>{title}</ItemTitle>
+					</Item>
 				))}
 				<MenuImportConfigItem />
 				<MenuExportConfigItem />

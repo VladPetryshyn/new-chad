@@ -12,5 +12,12 @@ const Container = styled.div<{ wallpaper: string }>`
 export const Wallpapers = () => {
 	const wallpaper = useAppSelector(({ wallpaper }) => wallpaper);
 
-	return <Container wallpaper={wallpaper} />;
+	return (
+		<Container
+			wallpaper={
+				wallpaper ||
+        "https://wallpapercave.com/download/macbook-wallpapers-hd-wp2870228"
+			}
+		/>
+	);
 };

@@ -6,6 +6,7 @@ export const Item = styled.div`
   align-items: center;
   margin-bottom: 1.5em;
   cursor: pointer;
+  font-size: 1.6rem;
   &:last-child {
     margin-bottom: 0;
   }

@@ -16,7 +16,7 @@ export const Widgets: FC<ItemProps> = ({ state }) => {
 			<ScrollBody>
 				{widgets.map(({ widget, isActive }) => (
 					<Widget widget={widget} isActive={isActive} key={widget}>
-						{renderObjectItem(WidgetItems[widget])}
+						{renderObjectItem(WidgetItems[widget], { isPreview: true })}
 					</Widget>
 				))}
 			</ScrollBody>

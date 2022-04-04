@@ -5,12 +5,16 @@ import { TasksWidget } from "@components/Widgets/Tasks";
 import { Widgets } from "../../types";
 
 export const defaultWidgetSettings = [
-	{ widget: Widgets.clock, type: "default", isActive: true },
-	{ widget: Widgets.search, type: "", isActive: true },
-	{ widget: Widgets.bookmarks, type: "", isActive: true },
-	{ widget: Widgets.tasks, type: "", isActive: true },
+	{ widget: Widgets.clock, isActive: true },
+	{ widget: Widgets.search, isActive: true },
+	{ widget: Widgets.bookmarks, isActive: true },
+	{ widget: Widgets.tasks, isActive: true },
 ];
 
+export interface WidgetSettingsI {
+  widget: Widgets;
+  isActive: boolean;
+}
 export type DefaultWidgetSettingsT = typeof defaultWidgetSettings;
 export type DefaultWidgetSettingsKeys = keyof DefaultWidgetSettingsT;
 

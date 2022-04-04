@@ -8,21 +8,18 @@ export const setThemesAC = (payload: Theme[]): setThemes => ({
 	payload,
 });
 
-export const addThemeAC =
-  (name: string): AppThunk =>
-  	(dispatch, getState) => {
-  		const themes = [
-  			...getState().themes,
-  			{
-  				name: name,
-  				id: uuidv4(),
-  				colors: { bg: "ffffff", fg: "ffffff", primary: "ffffff" },
-  			},
-  		];
+export const addThemeAC = (): AppThunk => (dispatch, getState) => {
+	const themes = [
+		...getState().themes,
+		{
+			id: uuidv4(),
+			colors: { bg: "ffffff", fg: "ffffff", primary: "ffffff" },
+		},
+	];
 
-  		localStorage.setItem("themes", JSON.stringify(themes));
-  		dispatch(setThemesAC(themes));
-  	};
+	localStorage.setItem("themes", JSON.stringify(themes));
+	dispatch(setThemesAC(themes));
+};
 
 export const deleteThemeAC =
   (themeId: string): AppThunk =>

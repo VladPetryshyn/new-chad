@@ -1,11 +1,12 @@
 import { ReactComponent as Plus } from "@assets/icons/plus.svg";
 import { ReactComponent as Close } from "@assets/icons/close.svg";
-import { useState } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { iconsList } from "@utils/iconList";
 import { LinkModal } from "@components/Modals/Link";
 import { LinkItemI } from "@utils/types";
 import { useToggle } from "@utils/hooks";
+import { DefaultWidgetProps } from "../types";
 
 const Wrapper = styled.div`
   display: flex;
@@ -62,9 +63,9 @@ const ItemContainer = styled.div`
 
 const bookmarks = localStorage.getItem("bookmarks");
 
-export const BookmarksWidget = () => {
+export const BookmarksWidget: FC<DefaultWidgetProps> = ({ isPreview }) => {
 	const [links, setLinks] = useState<LinkItemI[]>(
-		bookmarks ? JSON.parse(bookmarks) : [],
+		bookmarks && !isPreview ? JSON.parse(bookmarks) : [],
 	);
 	const [isOpen, toggleIsOpen] = useToggle(false);
 	const onAdd = (item: LinkItemI) => {

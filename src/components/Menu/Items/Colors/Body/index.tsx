@@ -8,14 +8,8 @@ export const ColorsBody = () => {
 
 	return (
 		<ScrollBody>
-			{themes.map(({ id, ...theme }) => (
-				<ColorCard
-					theme={{
-						id,
-						...theme,
-					}}
-					key={id}
-				/>
+			{themes.map((theme) => (
+				<ColorCard theme={theme} key={theme.id} />
 			))}
 			<AddPalette />
 		</ScrollBody>

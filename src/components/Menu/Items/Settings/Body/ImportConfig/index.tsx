@@ -1,38 +1,31 @@
-import { Modal } from "@components/Modals";
 import { ReactComponent as Upload } from "@assets/icons/upload.svg";
-import { useState } from "react";
-import styled from "styled-components";
+import { ChangeEvent, useState } from "react";
 import { Item, ItemTitle } from "../utils";
+import { FileInputModal } from "@components/Modals/File";
 
-const ModalContainer = styled.div`
-  min-width: 40em;
-  min-height: 20em;
-  padding: 3em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 3em;
-  border: 0.5em dashed ${(p) => p.theme.fg};
-  color: ${(p) => p.theme.fg};
-`;
+const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const fr = new FileReader();
 
-const ModalHeader = styled.h2`
-  font-size: 2.5em;
-  margin: 0.5em 0;
-  color: ${(p) => p.theme.fg};
-`;
+	if (e.target.files) {
+		fr.readAsText(e.target.files[0]);
+		fr.onload = function () {
+			if (typeof fr.result === "string") {
+				const config = JSON.parse(fr.result);
 
-const FileInput = styled.input`
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
+				Object.keys(config).forEach((key) => {
+					localStorage.setItem(key, JSON.stringify(config[key]));
+				});
+				window.location.reload();
+			}
+		};
+	}
+};
 
 export const MenuImportConfigItem = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const toggleModalOpen = () => setIsModalOpen((isOpen) => !isOpen);
+
 	return (
 		<>
 			<Item onClick={toggleModalOpen}>
@@ -40,15 +33,11 @@ export const MenuImportConfigItem = () => {
 				<ItemTitle>Import config</ItemTitle>
 			</Item>
 			<>
-				<FileInput id="file_input" type="file" />
-				<Modal isOpen={isModalOpen} onClose={toggleModalOpen}>
-					<label htmlFor="file_input">
-						<ModalContainer>
-							<Upload height="10em" width="10em" />
-							<ModalHeader>Drag or select your file </ModalHeader>
-						</ModalContainer>
-					</label>
-				</Modal>
+				<FileInputModal
+					isOpen={isModalOpen}
+					onClose={toggleModalOpen}
+					onChange={onChange}
+				/>
 			</>
 		</>
 	);

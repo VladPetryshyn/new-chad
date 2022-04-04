@@ -1,11 +1,12 @@
 import { ReactComponent as Search } from "@assets/icons/search.svg";
-import { useState } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { SearchEngineSelect } from "./EngineSelect";
 import { Input } from "@components/Input";
 import { iconsList } from "@utils/iconList";
 import { defaultSearchEngine } from "@utils/constants/widgets/defaults";
 import { SearchItemI } from "@utils/types";
+import { DefaultWidgetProps } from "../types";
 
 const SearchInput = styled(Input)`
   width: 100%;
@@ -36,9 +37,11 @@ const SearchIcon = styled(Search)`
 
 const localSearchEngine = localStorage.getItem("searchEngine");
 
-export const SearchWidget = () => {
+export const SearchWidget: FC<DefaultWidgetProps> = ({ isPreview }) => {
 	const [searchEngine, setSearchEngine] = useState<SearchItemI>(
-		localSearchEngine ? JSON.parse(localSearchEngine) : defaultSearchEngine,
+		localSearchEngine && !isPreview
+			? JSON.parse(localSearchEngine)
+			: defaultSearchEngine,
 	);
 
 	return (

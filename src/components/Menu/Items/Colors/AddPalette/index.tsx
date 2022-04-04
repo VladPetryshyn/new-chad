@@ -1,5 +1,3 @@
-import { random } from "@utils/index";
-import { randomThemeNames } from "@utils/constants/themes";
 import styled from "styled-components";
 import { MenuCardPlusButton } from "../../helpers";
 import { ColorCard } from "../Card";
@@ -11,26 +9,23 @@ const Container = styled.div`
   position: relative;
 `;
 
-const name = randomThemeNames[random(randomThemeNames.length - 1)];
+const colorCardFakeData = {
+	id: "10",
+	colors: {
+		fg: "#ffffff",
+		bg: "#ffffff",
+		primary: "#ffffff",
+	},
+};
 
 export const AddPalette = () => {
 	const dispatch = useAppDispatch();
 
-	const addTheme = () => dispatch(addThemeAC(name));
+	const addTheme = () => dispatch(addThemeAC());
 
 	return (
 		<Container>
-			<ColorCard
-				theme={{
-					id: "10",
-					name,
-					colors: {
-						fg: "#ffffff",
-						bg: "#ffffff",
-						primary: "#ffffff",
-					},
-				}}
-			/>
+			<ColorCard theme={colorCardFakeData} />
 			<MenuCardPlusButton onClick={addTheme} />
 		</Container>
 	);

@@ -93,6 +93,6 @@ export const ScrollBody = styled.div`
   border-radius: 30px;
   margin: 10px 20px 0 20px;
   padding: 2.4em 21px;
-  height: 37em;
+  max-height: 37em;
   overflow-y: auto;
 `;

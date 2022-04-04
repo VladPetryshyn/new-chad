@@ -1,4 +1,3 @@
-import React from "react";
 import { Grid } from "@components/Grid";
 import { Menu } from "@components/Menu";
 import { initialThemes } from "@utils/constants/themes";
@@ -29,7 +28,7 @@ function App() {
 		if (localTheme) dispatch(setThemeAC(JSON.parse(localTheme)));
 		if (localThemes) dispatch(setThemesAC(JSON.parse(localThemes)));
 		if (wallpaper) changeWallpaper(+wallpaper);
-		// else changeWallpaper(defaultWallpapers[0]);
+
 		if (!localTheme && !localThemes) {
 			localStorage.setItem("themes", JSON.stringify(initialThemes));
 			localStorage.setItem("currentTheme", JSON.stringify(theme));

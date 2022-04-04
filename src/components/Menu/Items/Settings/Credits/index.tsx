@@ -13,6 +13,12 @@ const Text = styled.span`
   left: 44%;
   right: 50%;
 `;
+const Heading = styled.h2`
+  font-size: 2em;
+`;
+const Container = styled.div`
+  padding: 1em;
+`;
 
 export const Credits = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -24,8 +30,10 @@ export const Credits = () => {
 	return (
 		<div>
 			<Modal onClose={onClose} isOpen={isOpen}>
-				<h2>Programming: Vlad Petryshyn</h2>
-				<h2>Design: Vlad Petryshyn, Katya Vartanyan</h2>
+				<Container>
+					<Heading>Programming: Vlad Petryshyn</Heading>
+					<Heading>Design: Vlad Petryshyn, Katya Vartanyan</Heading>
+				</Container>
 			</Modal>
 			<Text onClick={() => setIsOpen(true)}>credits</Text>
 		</div>
